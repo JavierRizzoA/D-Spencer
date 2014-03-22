@@ -19,6 +19,7 @@ class SentryGun extends Entity {
 		image = new Image("graphics/entities/sentry_gun.png");
 		graphic = image;
 		image.centerOrigin();
+		type = "sentry";
 	}
 
 	private function handleInput() {

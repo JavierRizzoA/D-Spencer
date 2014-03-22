@@ -43,11 +43,18 @@ class Person extends Entity {
 	}
 
 	private function checkCollision() {
-		var e:Entity = collide("projectile", x, y);
+		var e:Entity = null;
+		e = collide("projectile", x, y);
 		if(e != null) {
-			cast(e, entities.FoodProjectile).destroy;
+			cast(e, entities.FoodProjectile).destroy();
 			destroy();
 		}
+		e = null;
+		e = collide("sentry", x, y);
+		if(e != null) {
+			destroy();
+		}
+
 	}
 
 	public function destroy() {
