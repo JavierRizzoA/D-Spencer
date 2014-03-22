@@ -1,8 +1,10 @@
+package scenes;
+
 import com.haxepunk.Scene;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Text;
 
-class MainScene extends Scene {
+class GameScene extends Scene {
 	public var sentryGun:entities.SentryGun;
 
 	public override function begin() {
