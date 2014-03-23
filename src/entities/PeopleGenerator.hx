@@ -35,7 +35,7 @@ class PeopleGenerator extends Entity {
 
 	public override function update() {
 		super.update();
-		if(Std.random(100) == 0) {
+		if(Std.random(250) == 0) {
 			generatePeople();
 		}
 	}

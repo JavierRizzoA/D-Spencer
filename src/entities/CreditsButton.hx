@@ -7,15 +7,15 @@ import com.haxepunk.utils.Input;
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 
-class StartButton extends Entity {
+class CreditsButton extends Entity {
 
 	private var image:Image;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
-		image = new Image("graphics/gui/start_button.png");
+		image = new Image("graphics/gui/credits_button.png");
 		graphic = image;
-		setHitbox(275, 55);
+		setHitbox(278, 55);
 
 	}
 
@@ -23,7 +23,7 @@ class StartButton extends Entity {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			Mouse.cursor = MouseCursor.BUTTON;
 			if(Input.mousePressed) {
-				HXP.scene = new scenes.GameScene();
+				//HXP.scene = new scenes.GameScene();
 			}
 		} else {
 			Mouse.cursor = MouseCursor.ARROW;
