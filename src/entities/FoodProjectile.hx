@@ -21,6 +21,13 @@ class FoodProjectile extends Entity {
 		HXP.scene.remove(this);
 	}
 
+	public function checkBounds() {
+		if(x + width < 0) {
+			destroy();
+		}	
+	}
+
+
 	public override function update() {
 		moveAtAngle(angle, 5);
 		super.update();

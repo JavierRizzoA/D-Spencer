@@ -8,8 +8,10 @@ class Main extends Engine
 	{
 #if debug
 		HXP.console.enable();
-#end
+		HXP.scene = new scenes.GameScene();
+#else
 		HXP.scene = new scenes.MainMenu();
+#end
 	}
 
 	public static function main() { new Main(); }
