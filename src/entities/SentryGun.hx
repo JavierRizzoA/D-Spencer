@@ -75,9 +75,21 @@ class SentryGun extends Entity {
 		}
 	}
 
+	private function listenToLives() {
+		if (lives == 0) {
+			cast(HXP.scene, scenes.GameScene).bgmusic.stop();
+			HXP.scene = new scenes.GameOver(score);
+
+		}
+	}
+
 	public override function update() {
+		if(score < 0) {
+			score = 0;
+		}
 		handleInput();
 		rotate();
+		listenToLives();
 		checkCollision();
 		super.update();
 	}
