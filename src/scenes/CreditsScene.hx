@@ -13,10 +13,11 @@ class CreditsScene extends Scene {
 		addGraphic(new Image("graphics/backgrounds/creditsbg.png"));
 		sound = new Sfx("audio/credits.mp3");
 		sound.loop();
+		add(new entities.MuteButton(750, 0));
 	}
 
 	public override function update() {
-		if(Input.mousePressed) {
+		if(Input.mousePressed && Main.mouseShooting) {
 			sound.stop();
 			HXP.scene = new scenes.MainMenu();
 		}
