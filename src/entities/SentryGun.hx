@@ -16,10 +16,11 @@ class SentryGun extends Entity {
 	public function new(x:Float, y:Float) {
 		super(x, y);
 		setHitbox(w, h, 64, 64);
-		image = new Image("graphics/entities/sentry_gun.png");
+		image = new Image("graphics/entities/gun.png");
 		graphic = image;
 		image.centerOrigin();
 		type = "sentry";
+		layer = 0;
 	}
 
 	private function handleInput() {

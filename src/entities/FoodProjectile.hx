@@ -33,7 +33,6 @@ class FoodProjectile extends Entity {
 		}
 	}
 
-
 	public override function update() {
 		moveAtAngle(angle, 5);
 		checkBounds();
