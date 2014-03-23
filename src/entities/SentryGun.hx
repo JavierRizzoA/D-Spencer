@@ -32,22 +32,14 @@ class SentryGun extends Entity {
 	}
 
 	private function rotate() {
-		if(Input.mouseX > this.x && Input.mouseY < this.y) {
-			angle = Math.atan((Math.abs(y - Input.mouseY)) / (Math.abs(Input.mouseX - x))) * 57.2957795;
+		if(Input.mouseX >= this.x) {
+		angle = Math.asin((this.y - Input.mouseY)/Math.sqrt((Math.pow(this.y - Input.mouseY,2))+(Math.pow(this.x - Input.mouseX,2)))) * 57.2957795;
 		}
-		if(Input.mouseX < this.x && Input.mouseY < this.y) {
-			angle = Math.atan((Math.abs(Input.mouseX - x)) / (Math.abs(y - Input.mouseY))) * 57.2957795 + 90;
+		else	{
+		angle = -Math.asin((this.y - Input.mouseY)/Math.sqrt((Math.pow(this.y - Input.mouseY,2))+(Math.pow(this.x - Input.mouseX,2)))) * 57.2957795 + 180;
 		}
-		if(Input.mouseX < this.x && Input.mouseY > this.y) {
-			angle = Math.atan((Math.abs(y - Input.mouseY)) / (Math.abs(Input.mouseX - x))) * 57.2957795 + 180;
-		}
-		if(Input.mouseX > this.x && Input.mouseY > this.y) {
-			angle = Math.atan((Math.abs(Input.mouseX - x)) / (Math.abs(y - Input.mouseY))) * 57.2957795 + 270;
-		}
-
 		image.angle = angle;
-
-	}
+		}
 
 	private function checkCollision() {
 
