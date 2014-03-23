@@ -13,6 +13,7 @@ class Person extends Entity {
 	private var animTimer:Float;
 	private var foodWanted:Int;
 	private var globe:Globe;
+	private var velocity:Int;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -36,6 +37,7 @@ class Person extends Entity {
 		foodWanted = Std.random(4);
 		globe = new Globe(x + width / 2, y - height / 2 - 30, foodWanted);
 		HXP.scene.add(globe);
+		velocity = 1;
 
 
 	}
@@ -84,9 +86,13 @@ class Person extends Entity {
 		var e:Entity = null;
 		e = collide("projectile", x, y);
 		if(e != null) {
-			cast(e, entities.FoodProjectile).destroy();
-			HXP.scene.remove(globe);
-			destroy();
+			if(cast(e, FoodProjectile).food == foodWanted) {
+				destroy();
+				HXP.scene.remove(globe);
+			} else {
+				velocity++;
+			}
+			cast(e, FoodProjectile).destroy();
 		}
 		e = null;
 		e = collide("sentry", x, y);
@@ -104,7 +110,7 @@ class Person extends Entity {
 
 
 	public override function update() {
-		moveAtAngle(angle, 2);
+		moveAtAngle(angle, velocity);
 		checkCollision();
 		manageAnimation();
 		super.update();

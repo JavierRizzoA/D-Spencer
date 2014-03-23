@@ -4,6 +4,7 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
 import com.haxepunk.HXP;
+import com.haxepunk.Sfx;
 
 class SentryGun extends Entity {
 
@@ -13,6 +14,8 @@ class SentryGun extends Entity {
 	private var image:Image;
 	private var angle:Float;
 	private var currentFood:Int;
+	private var shoot:Sfx;
+	private var changeFood:Sfx;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -23,13 +26,21 @@ class SentryGun extends Entity {
 		type = "sentry";
 		layer = 0;
 		currentFood = 0;
+		shoot = new Sfx("audio/shoot.mp3");
+		changeFood = new Sfx("audio/change_food.mp3");
 	}
 
 	private function handleInput() {
 		if(Input.mousePressed) {
 			createFood();
+			if(Main.soundState) {
+				shoot.play();
+			}
 		}
 		if(Input.rightMousePressed) {
+			if(Main.soundState) {
+				changeFood.play();
+			}
 			currentFood++;
 			currentFood %= 4;
 		}

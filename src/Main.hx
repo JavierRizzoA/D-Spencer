@@ -3,7 +3,7 @@ import com.haxepunk.HXP;
 
 class Main extends Engine
 {
-	private static var soundState:Bool;
+	public static var soundState:Bool;
 
 	override public function init()
 	{

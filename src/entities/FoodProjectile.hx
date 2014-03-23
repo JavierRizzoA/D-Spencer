@@ -7,10 +7,10 @@ import com.haxepunk.HXP;
 class FoodProjectile extends Entity {
 	private var angle:Float;
 	private var image:Image;
+	public var food:Int;
 	public function new(x:Float, y:Float, a:Float, food:Int) {
 		super(x, y);
 		angle = a;
-		//image = Image.createRect(32, 32, 0xFFFFFF);
 		switch(food) {
 			case 0:
 				image = new Image("graphics/entities/food/taco_big.png");
@@ -22,10 +22,14 @@ class FoodProjectile extends Entity {
 				image = new Image("graphics/entities/food/pretzel_big.png");
 		}
 		image.centerOrigin();
+		try {
+			image.layer = 20;
+		}
 		graphic = image;
 		type = "projectile";
 		setHitbox(32, 32, 16, 16);
 		image.angle = Std.random(361);
+		this.food = food;
 	}
 
 	public function destroy() {

@@ -22,19 +22,17 @@ class GameScene extends Scene {
 		outline.centerOrigin();
 		circle.centerOrigin();
 		sentryBase.centerOrigin();
-		try {
-			/*sentryBase.layer = 50;
-			background.layer = 100;*/
-		} catch(msg:String) {
-
-		}
+		sentryBase.layer = 50;
+		background.layer = 100;
+		outline.layer = 50;
+		circle.layer = 51;
 		addGraphic(outline, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
 		addGraphic(circle, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
 		addGraphic(sentryBase, 0, HXP.halfWidth, HXP.halfHeight);
 		addGraphic(background);
 		sentryGun = new entities.SentryGun(HXP.halfWidth, HXP.halfHeight);
 		display = new entities.FoodDisplay((HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
-
+		display.layer = 0;
 		add(sentryGun);
 		add(new entities.PeopleGenerator(0, 0));
 		add(display);
