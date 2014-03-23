@@ -14,10 +14,8 @@ class GameScene extends Scene {
 		sentryBase = new Image("graphics/entities/sentry.png");
 		background = new Image("graphics/backgrounds/gamebg.png");
 		sentryBase.centerOrigin();
-		sentryBase.layer = 50;
-		background.layer = 100;
-		addGraphic(sentryBase, 0, HXP.halfWidth, HXP.halfHeight);
 		addGraphic(background);
+		addGraphic(sentryBase, 0, HXP.halfWidth, HXP.halfHeight);
 		sentryGun = new entities.SentryGun(HXP.halfWidth, HXP.halfHeight);
 
 		add(sentryGun);

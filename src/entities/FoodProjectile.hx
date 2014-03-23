@@ -10,7 +10,8 @@ class FoodProjectile extends Entity {
 	public function new(x:Float, y:Float, a:Float) {
 		super(x, y);
 		angle = a;
-		image = Image.createRect(32, 32, 0xFFFFFF);
+		//image = Image.createRect(32, 32, 0xFFFFFF);
+		image = new Image("graphics/entities/food/taco_big.png");
 		image.centerOrigin();
 		graphic = image;
 		type = "projectile";
@@ -35,6 +36,7 @@ class FoodProjectile extends Entity {
 
 	public override function update() {
 		moveAtAngle(angle, 5);
+		image.angle += 10;
 		checkBounds();
 		super.update();
 	}
