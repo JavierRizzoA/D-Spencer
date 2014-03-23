@@ -19,11 +19,11 @@ class Main extends Engine
 
 
 	public static function mute(){
-		if (state){
+		if (soundState){
 			state = false;
 		}
 		else{
-			state = true;
+			soundState = true;
 		}
 	}
 	public static function main() { new Main(); }

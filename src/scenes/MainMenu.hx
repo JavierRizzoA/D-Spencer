@@ -8,6 +8,7 @@ class MainMenu extends Scene {
 	public override function begin() {
 
 		add(new entities.StartButton(250, 65));
+		add(new entities.StartButton(500, 0));
 	}
 
 
