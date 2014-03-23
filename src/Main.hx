@@ -3,11 +3,11 @@ import com.haxepunk.HXP;
 
 class Main extends Engine
 {
-	private var state:Bool
-	soundState = true;
+	private static var soundState:Bool;
 
 	override public function init()
 	{
+		soundState = true;
 #if debug
 		HXP.console.enable();
 		HXP.scene = new scenes.GameScene();
@@ -20,7 +20,7 @@ class Main extends Engine
 
 	public static function mute(){
 		if (soundState){
-			state = false;
+			soundState = false;
 		}
 		else{
 			soundState = true;
