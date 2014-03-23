@@ -8,6 +8,9 @@ class Person extends Entity {
 
 	private var image:Image;
 	private var angle:Float;
+	private var images:Array<Image>;
+	private var currentImage:Int;
+	private var animTimer:Float;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -16,7 +19,32 @@ class Person extends Entity {
 		image.centerOrigin();
 		graphic = image;
 		setHitbox(32, 64, 16, 32);
+		switch(Std.random(1)) {
+			case 0:
+				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/guy" + i + ".png")];
+			case 1:
+				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/girl" + i + ".png")];
+		}
+		currentImage = 0;
+		graphic = images[currentImage];
+		animTimer = 0;
 
+	}
+
+	private function manageAnimation() {
+		animTimer += HXP.elapsed;
+		if(animTimer >= .2) {
+			currentImage++;
+			currentImage %= 3;
+			graphic = images[currentImage];
+			animTimer = 0;
+
+		}
+		if(x > HXP.halfWidth) {
+			images[currentImage].flipped = true;
+		} else {
+			images[currentImage].flipped = false;
+		}
 	}
 
 	private function getAngle():Float {
@@ -66,6 +94,7 @@ class Person extends Entity {
 	public override function update() {
 		moveAtAngle(angle, 2);
 		checkCollision();
+		manageAnimation();
 		super.update();
 	}
 }
