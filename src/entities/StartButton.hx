@@ -3,8 +3,9 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
+import com.haxepunk.utils.Input;
 
-class SentryGun extends Entity {
+class StartButton extends Entity {
 
 	public static var h:Int = 130;
 	public static var w:Int = 500;
@@ -16,13 +17,15 @@ class SentryGun extends Entity {
 		image = new Image("graphics/entities/start_button.png");
 		graphic = image;
 		image.centerOrigin();
+		setHitbox(w, h, 250, 65);
+
 	}
 
 	private function handleInput() {
-		if(Input.mousePressed) {
-			if (( Math.abs(this.x - Input.mouseX) <= 65 ) && ( Math.abs(this.y - Input.mouseY) <= 250 )) {
-			HXP.scene = new scenes.MainMenu();
-			{
+		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
+			if(Input.mousePressed) {
+				HXP.scene = new scenes.GameScene();
+			}
 		}
 	}
 
