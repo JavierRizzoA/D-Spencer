@@ -20,6 +20,7 @@ class MuteButton extends Entity {
 
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
+			Main.mouseShooting = false;
 			if(Input.mousePressed) {
 				new com.haxepunk.Sfx("audio/click.mp3").play();
 				if(!Main.isMute) {
@@ -30,6 +31,8 @@ class MuteButton extends Entity {
 					HXP.volume = 1;
 				}
 			}
+		} else {
+			Main.mouseShooting = true;
 		}
 	}
 
