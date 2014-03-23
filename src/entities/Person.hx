@@ -19,7 +19,7 @@ class Person extends Entity {
 		image.centerOrigin();
 		graphic = image;
 		setHitbox(32, 64, 16, 32);
-		switch(Std.random(1)) {
+		switch(Std.random(2)) {
 			case 0:
 				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/guy" + i + ".png")];
 			case 1:

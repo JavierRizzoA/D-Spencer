@@ -13,7 +13,7 @@ class PeopleGenerator extends Entity {
 	private function generatePeople() {
 		var posX:Int = 0;
 		var posY:Int = 0;
-		switch(Std.random(3)) {
+		switch(Std.random(4)) {
 			case 0:
 				posX = Std.random(HXP.width);
 				posY = -64;
