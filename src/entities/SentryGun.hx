@@ -12,6 +12,7 @@ class SentryGun extends Entity {
 
 	private var image:Image;
 	private var angle:Float;
+	private var currentFood:Int;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -21,16 +22,22 @@ class SentryGun extends Entity {
 		image.centerOrigin();
 		type = "sentry";
 		layer = 0;
+		currentFood = 0;
 	}
 
 	private function handleInput() {
 		if(Input.mousePressed) {
 			createFood();
 		}
+		if(Input.rightMousePressed) {
+			currentFood++;
+			currentFood %= 4;
+		}
+		cast(HXP.scene, scenes.GameScene).display.displayFood(currentFood);
 	}
 
 	private function createFood() {
-		HXP.scene.add(new FoodProjectile(x, y, angle));
+		HXP.scene.add(new FoodProjectile(x, y, angle, currentFood));
 	}
 
 	private function rotate() {
