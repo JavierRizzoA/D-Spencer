@@ -22,6 +22,7 @@ class StartButton extends Entity {
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			if(Input.mousePressed) {
+				new com.haxepunk.Sfx("audio/click.mp3").play();
 				if(cast(HXP.scene, scenes.MainMenu).bgmusic1.playing) {
 					cast(HXP.scene, scenes.MainMenu).bgmusic1.stop();
 				} else if(cast(HXP.scene, scenes.MainMenu).bgmusic2.playing) {

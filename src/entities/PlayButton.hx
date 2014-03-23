@@ -22,7 +22,8 @@ class PlayButton extends Entity {
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			if(Input.mousePressed) {
-
+				new com.haxepunk.Sfx("audio/click.mp3").play();
+				new com.haxepunk.Sfx("audio/transition.mp3").play();
 				HXP.scene = new scenes.GameScene();
 			}
 		}
