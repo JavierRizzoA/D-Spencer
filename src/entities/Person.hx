@@ -25,6 +25,9 @@ class Person extends Entity {
 			case 1:
 				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/girl" + i + ".png")];
 		}
+		for(i in 0 ... 3) {
+			images[i].centerOrigin();
+		}
 		currentImage = 0;
 		graphic = images[currentImage];
 		animTimer = 0;
