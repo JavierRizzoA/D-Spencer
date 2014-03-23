@@ -4,6 +4,7 @@ import com.haxepunk.Scene;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.graphics.Text;
 
 class GameScene extends Scene {
 	public var sentryGun:entities.SentryGun;
@@ -13,12 +14,16 @@ class GameScene extends Scene {
 	public var circle:Image;
 	public var display:entities.FoodDisplay;
 	private var lives:Array<entities.Star>;
+	private var prestige:Image;
+	private var score:Text;
 
 	public override function begin() {
 		sentryBase = new Image("graphics/entities/sentry.png");
 		background = new Image("graphics/backgrounds/gamebg.png");
 		outline = Image.createCircle(40, 0x000000);
 		circle = Image.createCircle(35, 0xFFFFFF);
+		prestige = new Image("graphics/gui/prestige.png");
+		score = new Text("0", 250, 0, {color: 0x000000, size: 50});
 
 		outline.centerOrigin();
 		circle.centerOrigin();
@@ -27,8 +32,10 @@ class GameScene extends Scene {
 		background.layer = 100;
 		outline.layer = 50;
 		circle.layer = 51;
+		prestige.layer = 52;
 		addGraphic(outline, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
 		addGraphic(circle, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
+		addGraphic(prestige, 0, 200);
 		addGraphic(sentryBase, 0, HXP.halfWidth, HXP.halfHeight);
 		addGraphic(background);
 		sentryGun = new entities.SentryGun(HXP.halfWidth, HXP.halfHeight);
@@ -37,6 +44,7 @@ class GameScene extends Scene {
 		add(sentryGun);
 		add(new entities.PeopleGenerator(0, 0));
 		add(display);
+		addGraphic(score);
 		lives = new Array();
 		for(i in 0 ... 3) {
 			lives[i] = new entities.Star(i * 50, 0);
@@ -65,8 +73,13 @@ class GameScene extends Scene {
 		}
 	}
 
+	private function displayScore() {
+		score.text = sentryGun.score + ""; 
+	}
+
 	public override function update() {
 		manageLives();
+		displayScore();
 		super.update();
 	}
 }
