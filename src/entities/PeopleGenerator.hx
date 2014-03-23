@@ -5,8 +5,11 @@ import com.haxepunk.HXP;
 
 class PeopleGenerator extends Entity {
 
+	private var timeSincePerson:Float;
+
 	public function new(x:Float, y:Float) {
 		super(x, y);
+		timeSincePerson = 0;
 
 	}
 
@@ -34,9 +37,15 @@ class PeopleGenerator extends Entity {
 	}
 
 	public override function update() {
+		timeSincePerson += HXP.elapsed;
 		super.update();
-		if(Std.random(250) == 0) {
+		if(Std.random(300) == 0) {
 			generatePeople();
+			timeSincePerson = 0;
+		}
+		if(timeSincePerson >= 3) {
+			generatePeople();
+			timeSincePerson = 0;
 		}
 	}
 

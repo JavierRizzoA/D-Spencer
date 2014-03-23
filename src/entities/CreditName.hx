@@ -1,4 +1,4 @@
-package entities;
+ackage entities;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Text;
