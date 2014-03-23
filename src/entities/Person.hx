@@ -11,6 +11,8 @@ class Person extends Entity {
 	private var images:Array<Image>;
 	private var currentImage:Int;
 	private var animTimer:Float;
+	private var foodWanted:Int;
+	private var globe:Globe;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -31,6 +33,10 @@ class Person extends Entity {
 		currentImage = 0;
 		graphic = images[currentImage];
 		animTimer = 0;
+		foodWanted = Std.random(4);
+		globe = new Globe(x + width / 2, y - height / 2 - 30, foodWanted);
+		HXP.scene.add(globe);
+
 
 	}
 
@@ -48,6 +54,7 @@ class Person extends Entity {
 		} else {
 			images[currentImage].flipped = false;
 		}
+		globe.moveTo(x + width / 2, y - height / 2 - 30);
 	}
 
 	private function getAngle():Float {
@@ -78,11 +85,13 @@ class Person extends Entity {
 		e = collide("projectile", x, y);
 		if(e != null) {
 			cast(e, entities.FoodProjectile).destroy();
+			HXP.scene.remove(globe);
 			destroy();
 		}
 		e = null;
 		e = collide("sentry", x, y);
 		if(e != null) {
+			HXP.scene.remove(globe);
 			destroy();
 		}
 
