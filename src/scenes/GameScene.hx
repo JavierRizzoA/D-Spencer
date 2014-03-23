@@ -11,9 +11,6 @@ class GameScene extends Scene {
 		sentryGun = new entities.SentryGun(HXP.halfWidth, HXP.halfHeight);
 
 		add(sentryGun);
-		add(new entities.Person(800, 600));
-		add(new entities.Person(0, 0));
-		add(new entities.Person(0, 600));
-		add(new entities.Person(800, 0));
+		add(new entities.PeopleGenerator(0, 0));
 	}
 }

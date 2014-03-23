@@ -13,7 +13,6 @@ class SentryGun extends Entity {
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
-		setHitbox(w, h, 130, 500);
 		image = new Image("graphics/entities/start_button.png");
 		graphic = image;
 		image.centerOrigin();

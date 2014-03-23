@@ -10,11 +10,11 @@ class FoodProjectile extends Entity {
 	public function new(x:Float, y:Float, a:Float) {
 		super(x, y);
 		angle = a;
-		image = Image.createRect(16, 16, 0xFFFFFF);
+		image = Image.createRect(32, 32, 0xFFFFFF);
 		image.centerOrigin();
 		graphic = image;
 		type = "projectile";
-		setHitbox(16, 16, 8, 8);
+		setHitbox(32, 32, 16, 16);
 	}
 
 	public function destroy() {
