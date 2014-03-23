@@ -22,7 +22,7 @@ class CreditsButton extends Entity {
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			if(Input.mousePressed) {
-				HXP.scene = new scenes.CreditsScene();
+				//HXP.scene = new scenes.CreditsScene();
 			}
 		}
 	}

@@ -22,6 +22,12 @@ class StartButton extends Entity {
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			if(Input.mousePressed) {
+				if(cast(HXP.scene, scenes.MainMenu).bgmusic1.playing) {
+					cast(HXP.scene, scenes.MainMenu).bgmusic1.stop();
+				} else if(cast(HXP.scene, scenes.MainMenu).bgmusic2.playing) {
+					cast(HXP.scene, scenes.MainMenu).bgmusic2.stop();
+				}
+
 				HXP.scene = new scenes.GameScene();
 			}
 		}

@@ -40,14 +40,10 @@ class SentryGun extends Entity {
 	private function handleInput() {
 		if(Input.mousePressed) {
 			createFood();
-			if(Main.soundState) {
-				shoot.play();
-			}
+			shoot.play();
 		}
 		if(Input.rightMousePressed) {
-			if(Main.soundState) {
-				changeFood.play();
-			}
+			changeFood.play();
 			currentFood++;
 			currentFood %= 4;
 		}

@@ -5,6 +5,7 @@ import com.haxepunk.HXP;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Text;
+import com.haxepunk.Sfx;
 
 class GameScene extends Scene {
 	public var sentryGun:entities.SentryGun;
@@ -16,6 +17,7 @@ class GameScene extends Scene {
 	private var lives:Array<entities.Star>;
 	private var prestige:Image;
 	private var score:Text;
+	public var bgmusic:Sfx;
 
 	public override function begin() {
 		sentryBase = new Image("graphics/entities/sentry.png");
@@ -24,6 +26,7 @@ class GameScene extends Scene {
 		circle = Image.createCircle(35, 0xFFFFFF);
 		prestige = new Image("graphics/gui/prestige.png");
 		score = new Text("0", 250, 0, {color: 0x000000, size: 50});
+		bgmusic = new Sfx("audio/gameplaybg.mp3");
 
 		outline.centerOrigin();
 		circle.centerOrigin();
@@ -45,11 +48,13 @@ class GameScene extends Scene {
 		add(new entities.PeopleGenerator(0, 0));
 		add(display);
 		addGraphic(score);
+		add(new entities.MuteButton(750, 0));
 		lives = new Array();
 		for(i in 0 ... 3) {
 			lives[i] = new entities.Star(i * 50, 0);
 			add(lives[i]);
 		}
+		bgmusic.loop();
 	}
 
 	private function manageLives() {

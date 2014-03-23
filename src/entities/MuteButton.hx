@@ -7,30 +7,42 @@ import com.haxepunk.utils.Input;
 
 class MuteButton extends Entity {
 
-	public static var h:Int = 30;
-	public static var w:Int = 30;
-
-	private var image:Image;
+	private var imageSound:Image;
+	private var imageMute:Image;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
-		image = new Image("graphics/entities/mute_button.png");
-		graphic = image;
-		image.centerOrigin();
-		setHitbox(w, h, 15, 15);
-
+		imageSound = new Image("graphics/gui/sound.png");
+		imageMute = new Image("graphics/gui/mute.png");
+		graphic = imageSound;
+		setHitbox(50, 50);
 	}
 
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			if(Input.mousePressed) {
-				mute();
+				if(!Main.isMute) {
+					Main.isMute = true;
+					HXP.volume = 0;
+				} else {
+					Main.isMute = false;
+					HXP.volume = 1;
+				}
 			}
+		}
+	}
+
+	private function handleAnimation() {
+		if(Main.isMute) {
+			graphic = imageMute;
+		} else {
+			graphic = imageSound;
 		}
 	}
 
 	public override function update() {
 		handleInput();
+		handleAnimation();
 		super.update();
 	}
 

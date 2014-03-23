@@ -3,6 +3,7 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.Sfx;
 
 class Person extends Entity {
 
@@ -14,6 +15,10 @@ class Person extends Entity {
 	private var foodWanted:Int;
 	private var globe:Globe;
 	private var velocity:Int;
+	private var error:Sfx;
+	private var eat:Sfx;
+	private var buh:Sfx;
+
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -22,11 +27,15 @@ class Person extends Entity {
 		image.centerOrigin();
 		graphic = image;
 		setHitbox(32, 64, 16, 32);
+		eat = new Sfx("audio/eat.mp3");
+		buh = new Sfx("audio/buh.mp3");
 		switch(Std.random(2)) {
 			case 0:
 				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/guy" + i + ".png")];
+				error = new Sfx("audio/error_guy.mp3");
 			case 1:
 				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/girl" + i + ".png")];
+				error = new Sfx("audio/error_girl.mp3");
 		}
 		for(i in 0 ... 3) {
 			images[i].centerOrigin();
@@ -90,10 +99,12 @@ class Person extends Entity {
 		e = collide("projectile", x, y);
 		if(e != null) {
 			if(cast(e, FoodProjectile).food == foodWanted) {
+				eat.play();
 				destroy();
 				HXP.scene.remove(globe);
 				giveScore();
 			} else {
+				error.play();
 				velocity++;
 				takeScore();
 			}
@@ -102,6 +113,7 @@ class Person extends Entity {
 		e = null;
 		e = collide("sentry", x, y);
 		if(e != null) {
+			buh.play();
 			HXP.scene.remove(globe);
 			destroy();
 		}

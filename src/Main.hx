@@ -1,13 +1,13 @@
 import com.haxepunk.Engine;
 import com.haxepunk.HXP;
+import com.haxepunk.Sfx;
 
-class Main extends Engine
-{
-	public static var soundState:Bool;
+class Main extends Engine {
+	
+	public static var isMute:Bool;
 
-	override public function init()
-	{
-		soundState = true;
+	override public function init() {
+		isMute = false;
 #if debug
 		HXP.console.enable();
 		HXP.scene = new scenes.GameScene();
@@ -16,16 +16,6 @@ class Main extends Engine
 #end
 	}
 
-
-
-	public static function mute(){
-		if (soundState){
-			soundState = false;
-		}
-		else{
-			soundState = true;
-		}
-	}
 	public static function main() { new Main(); }
 
 }
