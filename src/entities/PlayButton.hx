@@ -7,28 +7,23 @@ import com.haxepunk.utils.Input;
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 
-class StartButton extends Entity {
+class PlayButton extends Entity {
 
 	private var image:Image;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
-		image = new Image("graphics/gui/start_button.png");
+		image = new Image("graphics/gui/play_button.png");
 		graphic = image;
-		setHitbox(275, 55);
+		setHitbox(235, 85);
 
 	}
 
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
 			if(Input.mousePressed) {
-				if(cast(HXP.scene, scenes.MainMenu).bgmusic1.playing) {
-					cast(HXP.scene, scenes.MainMenu).bgmusic1.stop();
-				} else if(cast(HXP.scene, scenes.MainMenu).bgmusic2.playing) {
-					cast(HXP.scene, scenes.MainMenu).bgmusic2.stop();
-				}
 
-				HXP.scene = new scenes.InstructionsScene();
+				HXP.scene = new scenes.GameScene();
 			}
 		}
 	}
