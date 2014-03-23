@@ -24,12 +24,19 @@ class FoodProjectile extends Entity {
 	public function checkBounds() {
 		if(x + width < 0) {
 			destroy();
-		}	
+		} else if(x - width > HXP.width) {
+			destroy();
+		} else if(y + height < 0) {
+			destroy();
+		} else if(y - height > HXP.height) {
+			destroy();
+		}
 	}
 
 
 	public override function update() {
 		moveAtAngle(angle, 5);
+		checkBounds();
 		super.update();
 	}
 }
