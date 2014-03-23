@@ -21,12 +21,9 @@ class StartButton extends Entity {
 
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
-			Mouse.cursor = MouseCursor.BUTTON;
 			if(Input.mousePressed) {
 				HXP.scene = new scenes.GameScene();
 			}
-		} else {
-			Mouse.cursor = MouseCursor.ARROW;
 		}
 	}
 

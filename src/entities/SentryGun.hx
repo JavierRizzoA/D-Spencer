@@ -17,6 +17,10 @@ class SentryGun extends Entity {
 	private var shoot:Sfx;
 	private var changeFood:Sfx;
 
+	public var classic:Bool;
+	public var score:Int;
+	public var lives:Int;
+
 	public function new(x:Float, y:Float) {
 		super(x, y);
 		setHitbox(w, h, 64, 64);
@@ -28,6 +32,9 @@ class SentryGun extends Entity {
 		currentFood = 0;
 		shoot = new Sfx("audio/shoot.mp3");
 		changeFood = new Sfx("audio/change_food.mp3");
+		classic = false;
+		score = 0;
+		lives = 3;
 	}
 
 	private function handleInput() {
@@ -52,6 +59,9 @@ class SentryGun extends Entity {
 	}
 
 	private function rotate() {
+		if(classic) {
+			image = new Image("graphics/entities/sentry_gun.png");
+		}
 		if(Input.mouseX >= this.x) {
 			angle = Math.asin((this.y - Input.mouseY)/Math.sqrt((Math.pow(this.y - Input.mouseY,2))+(Math.pow(this.x - Input.mouseX,2)))) * 57.2957795;
 		}
@@ -62,7 +72,11 @@ class SentryGun extends Entity {
 	}
 
 	private function checkCollision() {
-
+		var e:Entity = null;
+		e = collide("person", x, y);
+		if(e != null) {
+			lives--;
+		}
 	}
 
 	public override function update() {

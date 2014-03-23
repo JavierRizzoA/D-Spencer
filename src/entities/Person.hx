@@ -38,6 +38,9 @@ class Person extends Entity {
 		globe = new Globe(x + width / 2, y - height / 2 - 30, foodWanted);
 		HXP.scene.add(globe);
 		velocity = 1;
+		layer = 10;
+		globe.layer = 10;
+		type = "person";
 
 
 	}
@@ -89,8 +92,10 @@ class Person extends Entity {
 			if(cast(e, FoodProjectile).food == foodWanted) {
 				destroy();
 				HXP.scene.remove(globe);
+				giveScore();
 			} else {
 				velocity++;
+				takeScore();
 			}
 			cast(e, FoodProjectile).destroy();
 		}
@@ -101,6 +106,14 @@ class Person extends Entity {
 			destroy();
 		}
 
+	}
+
+	private function giveScore() {
+		cast(HXP.scene, scenes.GameScene).sentryGun.score += 5;
+	}
+
+	private function takeScore() {
+		cast(HXP.scene, scenes.GameScene).sentryGun.score -= 1;
 	}
 
 	public function destroy() {

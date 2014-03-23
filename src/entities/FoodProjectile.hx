@@ -8,6 +8,7 @@ class FoodProjectile extends Entity {
 	private var angle:Float;
 	private var image:Image;
 	public var food:Int;
+	public var classic:Bool;
 	public function new(x:Float, y:Float, a:Float, food:Int) {
 		super(x, y);
 		angle = a;
@@ -30,6 +31,7 @@ class FoodProjectile extends Entity {
 		setHitbox(32, 32, 16, 16);
 		image.angle = Std.random(361);
 		this.food = food;
+		classic = false;
 	}
 
 	public function destroy() {
@@ -51,6 +53,9 @@ class FoodProjectile extends Entity {
 	public override function update() {
 		moveAtAngle(angle, 5);
 		image.angle += 5;
+		if(classic) {
+			image = Image.createRect(32, 32, 0xFFFFFF);
+		}
 		checkBounds();
 		super.update();
 	}

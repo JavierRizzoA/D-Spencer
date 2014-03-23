@@ -21,12 +21,9 @@ class CreditsButton extends Entity {
 
 	private function handleInput() {
 		if(collidePoint(x, y, Input.mouseX, Input.mouseY)) {
-			Mouse.cursor = MouseCursor.BUTTON;
 			if(Input.mousePressed) {
-				//HXP.scene = new scenes.GameScene();
+				HXP.scene = new scenes.CreditsScene();
 			}
-		} else {
-			Mouse.cursor = MouseCursor.ARROW;
 		}
 	}
 

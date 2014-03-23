@@ -12,6 +12,7 @@ class GameScene extends Scene {
 	public var outline:Image;
 	public var circle:Image;
 	public var display:entities.FoodDisplay;
+	private var lives:Array<entities.Star>;
 
 	public override function begin() {
 		sentryBase = new Image("graphics/entities/sentry.png");
@@ -36,5 +37,36 @@ class GameScene extends Scene {
 		add(sentryGun);
 		add(new entities.PeopleGenerator(0, 0));
 		add(display);
+		lives = new Array();
+		for(i in 0 ... 3) {
+			lives[i] = new entities.Star(i * 50, 0);
+			add(lives[i]);
+		}
+	}
+
+	private function manageLives() {
+		switch (sentryGun.lives) {
+			case 0:
+				lives[0].visible = false;
+				lives[1].visible = false;
+				lives[2].visible = false;
+			case 1:
+				lives[0].visible = true;
+				lives[1].visible = false;
+				lives[2].visible = false;
+			case 2:
+				lives[0].visible = true;
+				lives[1].visible = true;
+				lives[2].visible = false;
+			case 3:
+				lives[0].visible = true;
+				lives[1].visible = true;
+				lives[2].visible = true;
+		}
+	}
+
+	public override function update() {
+		manageLives();
+		super.update();
 	}
 }
