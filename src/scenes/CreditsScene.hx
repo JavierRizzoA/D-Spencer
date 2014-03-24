@@ -18,6 +18,7 @@ class CreditsScene extends Scene {
 
 	public override function update() {
 		if(Input.mousePressed && Main.mouseShooting) {
+			new com.haxepunk.Sfx("audio/click.mp3").play();
 			sound.stop();
 			HXP.scene = new scenes.MainMenu();
 		}
