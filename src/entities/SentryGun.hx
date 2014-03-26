@@ -2,8 +2,8 @@ package entities;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
-import com.haxepunk.utils.Input;
 import com.haxepunk.HXP;
+import com.haxepunk.utils.Input;
 import com.haxepunk.Sfx;
 
 class SentryGun extends Entity {
@@ -11,15 +11,14 @@ class SentryGun extends Entity {
 	public static var h:Int = 128;
 	public static var w:Int = 128;
 
-	private var image:Image;
-	private var angle:Float;
-	private var currentFood:Int;
-	private var shoot:Sfx;
-	private var changeFood:Sfx;
-
-	public var classic:Bool;
-	public var score:Int;
 	public var lives:Int;
+	public var score:Int;
+
+	private var angle:Float;
+	private var changeFood:Sfx;
+	private var currentFood:Int;
+	private var image:Image;
+	private var shoot:Sfx;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
@@ -32,7 +31,6 @@ class SentryGun extends Entity {
 		currentFood = 0;
 		shoot = new Sfx("audio/shoot.mp3");
 		changeFood = new Sfx("audio/change_food.mp3");
-		classic = false;
 		score = 0;
 		lives = 3;
 	}
@@ -57,9 +55,6 @@ class SentryGun extends Entity {
 	}
 
 	private function rotate() {
-		if(classic) {
-			image = new Image("graphics/entities/sentry_gun.png");
-		}
 		if(Input.mouseX >= this.x) {
 			angle = Math.asin((this.y - Input.mouseY)/Math.sqrt((Math.pow(this.y - Input.mouseY,2))+(Math.pow(this.x - Input.mouseX,2)))) * 57.2957795;
 		}
@@ -81,14 +76,11 @@ class SentryGun extends Entity {
 		if (lives == 0) {
 			cast(HXP.scene, scenes.GameScene).bgmusic.stop();
 			HXP.scene = new scenes.GameOver(score);
-
 		}
 	}
 
 	public override function update() {
-		if(score < 0) {
-			score = 0;
-		}
+		if(score < 0) score = 0;
 		handleInput();
 		rotate();
 		listenToLives();

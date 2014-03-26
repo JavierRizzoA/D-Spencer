@@ -18,6 +18,8 @@ class Main extends Engine {
 #end
 	}
 
-	public static function main() { new Main(); }
+	public static function main() { 
+		new Main();
+	}
 
 }

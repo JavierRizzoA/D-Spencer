@@ -1,18 +1,19 @@
 package scenes;
 
-import com.haxepunk.Scene;
-import com.haxepunk.graphics.Image;
-import com.haxepunk.Sfx;
 import com.haxepunk.HXP;
+import com.haxepunk.graphics.Image;
+import com.haxepunk.Scene;
+import com.haxepunk.Sfx;
 
 class MainMenu extends Scene {
-	public var startButton:entities.StartButton;
-	private var background:Image;
+	
 	public var bgmusic1:Sfx;
 	public var bgmusic2:Sfx;
-	private var timeAcum:Float;
-	private var startedbg2:Bool;
+	public var startButton:entities.StartButton;
 
+	private var background:Image;
+	private var startedbg2:Bool;
+	private var timeAcum:Float;
 
 	public override function begin() {
 		background = new Image("graphics/backgrounds/mainmenubg.png");
@@ -39,6 +40,5 @@ class MainMenu extends Scene {
 		startBg2();
 		super.update();
 	}
-
-
+	
 }

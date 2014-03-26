@@ -5,9 +5,9 @@ import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
 
 class FoodDisplay extends Entity {
+
 	public function new(x:Float, y:Float) {
 		super(x, y);
-
 	}
 
 	public function displayFood(food:Int) {
@@ -29,7 +29,7 @@ class FoodDisplay extends Entity {
 
 
 	public override function update() {
-
 		super.update();
 	}
+	
 }

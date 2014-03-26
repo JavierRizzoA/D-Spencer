@@ -1,7 +1,7 @@
 package scenes;
 
-import com.haxepunk.Scene;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.Scene;
 
 class InstructionsScene extends Scene {
 	public override function begin() {

@@ -1,8 +1,8 @@
 package scenes;
 
-import com.haxepunk.Scene;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Text;
+import com.haxepunk.Scene;
 
 class GameOver extends Scene {
 
@@ -11,7 +11,6 @@ class GameOver extends Scene {
 	public function new(score:Int) {
 		super();
 		this.score = new Text(score + "", 250, 230, 0, 0, {color: 0x000000, size: 50});
-
 	}
 
 	public override function begin() {
@@ -19,6 +18,6 @@ class GameOver extends Scene {
 		add(new entities.PlayAgainButton(400, 350));
 		add(new entities.MainMenuButton(400, 410));
 		addGraphic(score);
-
 	}
+
 }

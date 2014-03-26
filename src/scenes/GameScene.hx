@@ -1,19 +1,19 @@
 package scenes;
 
-import com.haxepunk.Scene;
 import com.haxepunk.HXP;
-import com.haxepunk.graphics.Text;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Text;
+import com.haxepunk.Scene;
 import com.haxepunk.Sfx;
 
 class GameScene extends Scene {
-	public var sentryGun:entities.SentryGun;
-	public var sentryBase:Image;
 	public var background:Image;
-	public var outline:Image;
 	public var circle:Image;
 	public var display:entities.FoodDisplay;
+	public var outline:Image;
+	public var sentryBase:Image;
+	public var sentryGun:entities.SentryGun;
+	
 	private var lives:Array<entities.Star>;
 	private var prestige:Image;
 	private var score:Text;
@@ -27,15 +27,9 @@ class GameScene extends Scene {
 		prestige = new Image("graphics/gui/prestige.png");
 		score = new Text("0", 250, 0, 0, 0, {color: 0x000000, size: 50});
 		bgmusic = new Sfx("audio/gameplaybg.mp3");
-
 		outline.centerOrigin();
 		circle.centerOrigin();
 		sentryBase.centerOrigin();
-		//sentryBase.layer = 50;
-		//background.layer = 100;
-		//outline.layer = 50;
-		//circle.layer = 51;
-		//prestige.layer = 52;
 		addGraphic(outline, 50, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
 		addGraphic(circle, 49, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
 		addGraphic(prestige, 52, 200, 0);
@@ -87,4 +81,5 @@ class GameScene extends Scene {
 		displayScore();
 		super.update();
 	}
+
 }

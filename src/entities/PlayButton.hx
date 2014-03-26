@@ -4,8 +4,6 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
-import flash.ui.Mouse;
-import flash.ui.MouseCursor;
 
 class PlayButton extends Entity {
 
@@ -16,7 +14,6 @@ class PlayButton extends Entity {
 		image = new Image("graphics/gui/play_button.png");
 		graphic = image;
 		setHitbox(235, 85);
-
 	}
 
 	private function handleInput() {

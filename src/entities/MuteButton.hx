@@ -7,8 +7,8 @@ import com.haxepunk.utils.Input;
 
 class MuteButton extends Entity {
 
+	private var imageMute:Image;	
 	private var imageSound:Image;
-	private var imageMute:Image;
 
 	public function new(x:Float, y:Float) {
 		super(x, y);

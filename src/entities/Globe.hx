@@ -20,11 +20,9 @@ class Globe extends Entity {
 				image = new Image("graphics/entities/globes/globe_pretzel.png");
 		}
 		graphic = image;
-
 	}
 
 	public override function update() {
-
 		super.update();
 	}
 

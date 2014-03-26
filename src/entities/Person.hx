@@ -1,30 +1,26 @@
 package entities;
 
 import com.haxepunk.Entity;
-import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.HXP;
 import com.haxepunk.Sfx;
 
 class Person extends Entity {
 
-	private var image:Image;
 	private var angle:Float;
-	private var images:Array<Image>;
-	private var currentImage:Int;
 	private var animTimer:Float;
+	private var buh:Sfx;
+	private var currentImage:Int;
+	private var eat:Sfx;
+	private var error:Sfx;
 	private var foodWanted:Int;
 	private var globe:Globe;
+	private var images:Array<Image>;
 	private var velocity:Int;
-	private var error:Sfx;
-	private var eat:Sfx;
-	private var buh:Sfx;
-
 
 	public function new(x:Float, y:Float) {
 		super(x, y);
 		angle = getAngle();
-		image = Image.createRect(32, 64, 0x00FF00);
-		image.centerOrigin();
 		graphic = image;
 		setHitbox(32, 64, 16, 32);
 		eat = new Sfx("audio/eat.mp3");
@@ -37,9 +33,7 @@ class Person extends Entity {
 				images = [for(i in 1 ... 4) new Image("graphics/entities/persons/girl" + i + ".png")];
 				error = new Sfx("audio/error_girl.mp3");
 		}
-		for(i in 0 ... 3) {
-			images[i].centerOrigin();
-		}
+		for(i in 0 ... 3) images[i].centerOrigin();
 		currentImage = 0;
 		graphic = images[currentImage];
 		animTimer = 0;
@@ -50,8 +44,6 @@ class Person extends Entity {
 		layer = 10;
 		globe.layer = 10;
 		type = "person";
-
-
 	}
 
 	private function manageAnimation() {
@@ -61,7 +53,6 @@ class Person extends Entity {
 			currentImage %= 3;
 			graphic = images[currentImage];
 			animTimer = 0;
-
 		}
 		if(x > HXP.halfWidth) {
 			images[currentImage].flipped = true;
@@ -72,10 +63,9 @@ class Person extends Entity {
 	}
 
 	private function getAngle():Float {
+		var angle:Float = 0;
 		var centerX = HXP.halfWidth;
 		var centerY = HXP.halfHeight;
-		var angle:Float = 0;
-
 		if(x > centerX && y < centerY) {
 			angle = Math.atan((Math.abs(centerY - y)) / (Math.abs(x - centerX))) * 57.2957795;
 		}
@@ -90,7 +80,6 @@ class Person extends Entity {
 		}
 		angle += 180;
 		angle %= 360;
-
 		return angle;
 	}
 
@@ -132,12 +121,11 @@ class Person extends Entity {
 		HXP.scene.remove(this);
 	}
 
-
-
 	public override function update() {
 		moveAtAngle(angle, velocity);
 		checkCollision();
 		manageAnimation();
 		super.update();
 	}
+	
 }

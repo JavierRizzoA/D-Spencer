@@ -1,12 +1,13 @@
 package scenes;
 
-import com.haxepunk.Scene;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.Sfx;
 import com.haxepunk.utils.Input;
+import com.haxepunk.Scene;
 
 class CreditsScene extends Scene {
+
 	private var sound:Sfx;
 
 	public override function begin() {
@@ -24,4 +25,5 @@ class CreditsScene extends Scene {
 		}
 		super.update();
 	}
+
 }

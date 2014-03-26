@@ -10,7 +10,6 @@ class PeopleGenerator extends Entity {
 	public function new(x:Float, y:Float) {
 		super(x, y);
 		timeSincePerson = 0;
-
 	}
 
 	private function generatePeople() {

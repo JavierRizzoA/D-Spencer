@@ -4,8 +4,6 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
-import flash.ui.Mouse;
-import flash.ui.MouseCursor;
 
 class StartButton extends Entity {
 
@@ -16,7 +14,6 @@ class StartButton extends Entity {
 		image = new Image("graphics/gui/start_button.png");
 		graphic = image;
 		setHitbox(275, 55);
-
 	}
 
 	private function handleInput() {

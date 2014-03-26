@@ -9,11 +9,10 @@ class Star extends Entity {
 		super(x, y);
 		graphic = new Image("graphics/gui/star.png");
 		layer = 9;
-
 	}
 
 	public override function update() {
-
 		super.update();
 	}
+	
 }
