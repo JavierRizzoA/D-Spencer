@@ -23,15 +23,13 @@ class FoodProjectile extends Entity {
 				image = new Image("graphics/entities/food/pretzel_big.png");
 		}
 		image.centerOrigin();
-		try {
-			//image.layer = 20;
-		}
 		graphic = image;
 		type = "projectile";
 		setHitbox(32, 32, 16, 16);
 		image.angle = Std.random(361);
 		this.food = food;
 		classic = false;
+		this.layer = 99;
 	}
 
 	public function destroy() {

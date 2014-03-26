@@ -37,9 +37,9 @@ class GameScene extends Scene {
 		//circle.layer = 51;
 		//prestige.layer = 52;
 		addGraphic(outline, 50, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
-		addGraphic(circle, 51, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
+		addGraphic(circle, 49, (HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);
 		addGraphic(prestige, 52, 200, 0);
-		addGraphic(sentryBase, 49, HXP.halfWidth, HXP.halfHeight);
+		addGraphic(sentryBase, 48, HXP.halfWidth, HXP.halfHeight);
 		addGraphic(background, 100);
 		sentryGun = new entities.SentryGun(HXP.halfWidth, HXP.halfHeight);
 		display = new entities.FoodDisplay((HXP.halfWidth - 23) * 2, (HXP.halfHeight - 23) * 2);

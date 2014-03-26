@@ -14,7 +14,6 @@ class CreditsButton extends Entity {
 		image = new Image("graphics/gui/credits_button.png");
 		graphic = image;
 		setHitbox(278, 55);
-
 	}
 
 	private function handleInput() {
