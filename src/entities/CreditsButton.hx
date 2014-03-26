@@ -4,8 +4,6 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
-import flash.ui.Mouse;
-import flash.ui.MouseCursor;
 
 class CreditsButton extends Entity {
 

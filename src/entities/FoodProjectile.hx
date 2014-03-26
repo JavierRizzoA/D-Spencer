@@ -24,7 +24,7 @@ class FoodProjectile extends Entity {
 		}
 		image.centerOrigin();
 		try {
-			image.layer = 20;
+			//image.layer = 20;
 		}
 		graphic = image;
 		type = "projectile";

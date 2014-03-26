@@ -10,7 +10,7 @@ class GameOver extends Scene {
 
 	public function new(score:Int) {
 		super();
-		this.score = new Text(score + "", 250, 230, {color: 0x000000, size: 50});
+		this.score = new Text(score + "", 250, 230, 0, 0, {color: 0x000000, size: 50});
 
 	}
 
