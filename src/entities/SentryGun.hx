@@ -58,7 +58,7 @@ class SentryGun extends Entity {
 		if(Input.mouseX >= this.x) {
 			angle = Math.asin((this.y - Input.mouseY)/Math.sqrt((Math.pow(this.y - Input.mouseY,2))+(Math.pow(this.x - Input.mouseX,2)))) * 57.2957795;
 		}
-		else	{
+		else {
 			angle = -Math.asin((this.y - Input.mouseY)/Math.sqrt((Math.pow(this.y - Input.mouseY,2))+(Math.pow(this.x - Input.mouseX,2)))) * 57.2957795 + 180;
 		}
 		image.angle = angle;

@@ -21,7 +21,6 @@ class Person extends Entity {
 	public function new(x:Float, y:Float) {
 		super(x, y);
 		angle = getAngle();
-		graphic = image;
 		setHitbox(32, 64, 16, 32);
 		eat = new Sfx("audio/eat.mp3");
 		buh = new Sfx("audio/buh.mp3");
